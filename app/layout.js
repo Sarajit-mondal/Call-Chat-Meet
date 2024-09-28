@@ -29,8 +29,8 @@ export default function RootLayout({ children }) {
           <header>
             <NavBar />
           </header>
-          <main className="mx-auto bg-[#e2e7fc] max-w-7xl">
-            <div className="min-h-[calc(100vh-280px)] py-12">{children}</div>
+          <main className="mx-auto bg-[#e2e7fc] max-w-7xl px-5">
+            <div className="py-12">{children}</div>
           </main>
           <Toaster />
         </AuthProvider>
