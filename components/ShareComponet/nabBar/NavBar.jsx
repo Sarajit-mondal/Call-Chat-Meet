@@ -23,15 +23,11 @@ function NavBar() {
       path: "/",
     },
     {
-      name: "Pricing",
-      path: "/pricing",
-    },
-    {
       name: "About",
       path: "/about",
     },
     {
-      name: "ContactUs",
+      name: "Contact",
       path: "/contact",
     },
   ];
@@ -42,7 +38,8 @@ function NavBar() {
           href="/"
           className="text-center p-5 font-bold text-3xl text-blue-500 hover:text-blue-600"
         >
-          Chat<span className="text-black">Vibe</span>
+          Call<span className="text-black">Chat</span>
+          Meet
         </Link>
 
         {/* desktop menu */}
