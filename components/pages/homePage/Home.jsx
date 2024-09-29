@@ -1,6 +1,5 @@
 import Metting from "./Metting";
 import Slider from "./Slider";
-
 async function Home() {
   return (
     <div className="flex flex-col md:flex-col lg:flex-row items-center justify-between w-full h-full max-w-8xl gap-5">

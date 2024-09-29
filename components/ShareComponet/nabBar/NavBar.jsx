@@ -13,7 +13,7 @@ import MobileMenu from "./MobileMenu";
 import { SignUpButton, useUser } from "@clerk/nextjs";
 function NavBar() {
   const { isLoaded, isSignedIn, user } = useUser();
-  console.log(user);
+
   const pathName = usePathname();
   const [isDropDown, setIsDropDown] = useState();
   // Function to handle the dropdown toggle
@@ -67,6 +67,7 @@ function NavBar() {
         <div>
           <ul className="flex items-center gap-[6px] ">
             {/* profile dropdown */}
+
             {user ? (
               <div className="flex gap-4">
                 <li
@@ -86,18 +87,39 @@ function NavBar() {
                   <BsChatSquareText />
                 </li>
                 <div onClick={toggleDropdown}>
-                  <li className=" py-1 px-2 text-2xl bg-blue-500 rounded-md hover:bg-blue-600 text-white  hover:scale-105 transition-all cursor-pointer">
-                    <CgProfile />
+                  <li className="p-1 text-2xl bg-blue-500 rounded-full hover:bg-blue-600 text-white  hover:scale-105 transition-all cursor-pointer">
+                    {user ? (
+                      <Image
+                        className="rounded-full"
+                        width={24}
+                        height={24}
+                        src={user?.imageUrl}
+                        alt="Profile Image"
+                      ></Image>
+                    ) : (
+                      <CgProfile />
+                    )}
                   </li>
                   {isDropDown && <Profile />}
                 </div>
               </div>
-            ) : (
-              <li className=" text-xl text-white rounded-md bg-blue-500 hover:bg-blue-600 hover:text-white  hover:scale-105 transition-all">
-                <Link href="/sign-up" className="text-[16px]  font-bold px-1">
+            ) : isLoaded ? (
+              <li>
+                <Link
+                  href="/sign-up"
+                  className=" p-2 mx-2 text-xl text-white rounded-md bg-blue-500 hover:bg-blue-600 hover:text-white  hover:scale-105 transition-all "
+                >
                   Sign Up
                 </Link>
+                <Link
+                  href="/sign-in"
+                  className=" p-2 text-xl text-white rounded-md bg-blue-500 hover:bg-blue-600 hover:text-white  hover:scale-105 transition-all"
+                >
+                  Sign In
+                </Link>
               </li>
+            ) : (
+              "Loading....."
             )}
 
             {/* mobile menu */}

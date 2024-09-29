@@ -1,6 +1,6 @@
 "use client";
 
-import { SignOutButton } from "@clerk/nextjs";
+import { SignOutButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,6 +14,8 @@ import {
 } from "react-icons/fa";
 
 function Profile({ setIsDropDown }) {
+  const { user } = useUser();
+  console.log(user.fullName);
   const route = useRouter();
 
   return (
@@ -25,13 +27,17 @@ function Profile({ setIsDropDown }) {
             width={64}
             height={64}
             src={
-              "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726704000&semt=ais_hybrid"
+              user
+                ? user?.imageUrl
+                : "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726704000&semt=ais_hybrid"
             }
             alt="Profile picture"
             className="rounded-full mx-auto"
           ></Image>
 
-          <h3 className="mt-2 font-bold">{"User Name"}</h3>
+          <h3 className="mt-2 font-bold">
+            {user ? user?.fullName : "User Name"}
+          </h3>
         </li>
 
         {/* Menu Items */}
