@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ImCross } from "react-icons/im";
 import { RiMenuUnfold2Line } from "react-icons/ri";
 
 const MobileMenu = () => {
@@ -33,7 +32,7 @@ const MobileMenu = () => {
           onClick={() => setDisplay(false)}
           className="hover:text-red-500 p-6 mb-6"
         >
-          <ImCross className="text-2xl" />
+          <p className="text-2xl">x</p>
         </button>
         <hr className="text-xl font-bold h-2 mb-3" />
         <li

@@ -7,12 +7,13 @@ import Profile from "./Profile";
 import { usePathname } from "next/navigation";
 import { BsChatSquareText } from "react-icons/bs";
 import { IoNotifications } from "react-icons/io5";
-import { useSession } from "next-auth/react";
+
 import Image from "next/image";
 import MobileMenu from "./MobileMenu";
+import { SignUpButton, useUser } from "@clerk/nextjs";
 function NavBar() {
-  const session = useSession();
-  console.log("sectiondata", session);
+  const user = useUser();
+  console.log(user);
   const pathName = usePathname();
   const [isDropDown, setIsDropDown] = useState();
   // Function to handle the dropdown toggle
@@ -85,27 +86,16 @@ function NavBar() {
               </li>
               <div onClick={toggleDropdown}>
                 <li className=" py-1 px-2 text-2xl bg-blue-500 rounded-md hover:bg-blue-600 text-white  hover:scale-105 transition-all cursor-pointer">
-                  {session.data?.user?.image ? (
-                    <Image
-                      width={22}
-                      height={22}
-                      src={session.data?.user?.image}
-                      alt="Profile picture"
-                      className="rounded-full mx-auto"
-                    ></Image>
-                  ) : (
-                    <CgProfile />
-                  )}
+                  <CgProfile />
                 </li>
                 {isDropDown && <Profile />}
               </div>
             </div>
 
             <li className=" text-xl text-white rounded-md bg-blue-500 hover:bg-blue-600 hover:text-white  hover:scale-105 transition-all">
-              <Link href={"/api/auth/signup"}>
-                {" "}
-                <button className="text-[16px] px-1 font-bold">SignUp</button>
-              </Link>
+              <button className="text-[16px] px-1 font-bold">
+                <SignUpButton />
+              </button>
             </li>
 
             {/* mobile menu */}

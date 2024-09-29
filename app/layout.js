@@ -3,7 +3,7 @@ import "./globals.css";
 
 import { Toaster } from "react-hot-toast";
 import NavBar from "@/components/ShareComponet/nabBar/NavBar";
-import AuthProvider from "@/services/AuthProvider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,8 +24,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <AuthProvider>
+      <ClerkProvider>
+        <body>
           <header>
             <NavBar />
           </header>
@@ -33,8 +33,8 @@ export default function RootLayout({ children }) {
             <div className="py-12">{children}</div>
           </main>
           <Toaster />
-        </AuthProvider>
-      </body>
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
