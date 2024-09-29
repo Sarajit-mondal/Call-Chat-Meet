@@ -9,6 +9,7 @@ import { BsChatSquareText } from "react-icons/bs";
 import { IoNotifications } from "react-icons/io5";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import MobileMenu from "./MobileMenu";
 function NavBar() {
   const session = useSession();
   console.log("sectiondata", session);
@@ -109,7 +110,7 @@ function NavBar() {
 
             {/* mobile menu */}
             <div onClick={() => setIsDropDown(false)}>
-              {/* <MobileMenu /> */}
+              <MobileMenu />
             </div>
           </ul>
         </div>
