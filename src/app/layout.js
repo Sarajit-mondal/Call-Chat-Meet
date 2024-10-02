@@ -2,9 +2,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import { Toaster } from "react-hot-toast";
-import NavBar from "@/components/ShareComponet/nabBar/NavBar";
+
 import { ClerkProvider } from "@clerk/nextjs";
 
+import NavBar from "../components/ShareComponet/nabBar/NavBar";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export default function RootLayout({ children }) {
             <NavBar />
           </header>
           <main className="mx-auto bg-[#e2e7fc] max-w-7xl px-5">
-            <div className="py-12">{children}</div>
+            <div className="py-5 md:py-10">{children}</div>
           </main>
           <Toaster />
         </body>
