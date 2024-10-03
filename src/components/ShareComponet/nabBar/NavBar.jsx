@@ -10,7 +10,7 @@ import { IoNotifications } from "react-icons/io5";
 
 import Image from "next/image";
 import MobileMenu from "./MobileMenu";
-import { SignUpButton, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 function NavBar() {
   const { isLoaded, isSignedIn, user } = useUser();
 
@@ -84,7 +84,9 @@ function NavBar() {
                   onClick={() => setIsDropDown(false)}
                   className=" py-1 px-2 text-2xl text-black rounded-md hover:bg-blue-500 hover:text-white  hover:scale-105 transition-all cursor-pointer"
                 >
-                  <BsChatSquareText />
+                  <Link href="/chatPlace">
+                    <BsChatSquareText />
+                  </Link>
                 </li>
                 <div onClick={toggleDropdown}>
                   <li className="p-1 text-2xl bg-blue-500 rounded-full hover:bg-blue-600 text-white  hover:scale-105 transition-all cursor-pointer">
