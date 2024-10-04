@@ -16,7 +16,6 @@ export const useSocket = () => {
 
     // Listen for messages from the server
     socketIo.on("message", (data) => {
-      console.log("Message from server:", data);
       setMessage(data); // Store the incoming message
     });
 
