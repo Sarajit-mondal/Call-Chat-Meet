@@ -1,18 +1,32 @@
+"use client";
+import { useEffect, useState } from "react";
 import Chat from "../../components/chat&Call/chat/Chat";
+import { useSocket } from "../../hooks/useSocket";
 
 function ShowChats() {
+  const { socket, message } = useSocket()
+ const [messages, setMessages] = useState([]); // Store all messages
+
+
+  useEffect(()=>{
+    setMessages((pre)=> [...pre,message])
+  },[message])
+
   return (
     <div>
       <div className="w-full min-h-[calc(100vh-250px)]">
-        <div className="flex justify-between gap-2">
-          {/* your patner chats */}
-          <div className="bg-red-300  w-full">asdfsdf</div>
-          {/* your  chats */}
-          <div className="bg-red-500   w-full">asdfasdf</div>
+        <div>
+          {/* Your chats */}
+          <div className="bg-red-500 w-full max-h-[70vh] overflow-y-scroll scrollbar-thin">
+            {/* Render each message as a separate <p> element */}
+            {
+              messages.map((mess)=><p>{mess}</p>)
+            }
+          </div>
         </div>
       </div>
-      {/* chat input and send button */}
-      <Chat />
+      {/* Chat input and send button */}
+      <Chat/>
     </div>
   );
 }
